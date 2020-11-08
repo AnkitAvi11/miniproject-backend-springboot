@@ -3,6 +3,7 @@ package expenser.miniproject.expenser.income;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -41,6 +42,21 @@ public class IncomeController {
         Date dateSevenDaysAgo = cal.getTime();
         System.out.println(dateSevenDaysAgo+" " + currentDate);
         return incomeService.getIncomeOfWeek(username, dateSevenDaysAgo, currentDate);
+    }
+
+    //  api to get the start and end date
+    @RequestMapping("/startend")
+    public List<Date> getStartEndDate() {
+        Date currentDate = new Date();
+
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -7);
+
+        Date dateSevenDaysAgo = cal.getTime();
+        return Arrays.asList(
+                dateSevenDaysAgo,
+                currentDate
+        );
     }
 
 }
