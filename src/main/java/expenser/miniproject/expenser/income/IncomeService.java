@@ -41,4 +41,9 @@ public class IncomeService {
         return income;
     }
 
+    //  service method to delete an income with its primary key
+    public void deleteIncomeById(int id) {
+        incomeRepository.deleteById(id);
+    }
+
 }

@@ -60,4 +60,11 @@ public class IncomeController {
         );
     }
 
+    //  method to delete income
+    @RequestMapping(method = RequestMethod.DELETE, value = "income/delete/{id}")
+    public void deleteExpense(@PathVariable int id)
+    {
+        incomeService.deleteIncomeById(id);
+    }
+
 }
